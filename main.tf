@@ -29,7 +29,6 @@ module "aaa_subnet_bbb" {
   depends_on = [module.aaa_vpc_aaa]
 }
 
-
 module "aaa_subnet_ccc" {
   source = "./vpc-subnets"
 

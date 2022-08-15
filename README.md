@@ -1,1 +1,0 @@
-# terraform-internal-network-via-vpn

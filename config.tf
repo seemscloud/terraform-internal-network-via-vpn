@@ -7,6 +7,7 @@ terraform {
 provider "google" {
   credentials = ".credentials.json"
   project     = var.global-project
+  region      = var.global-region
 }
 
 resource "google_compute_project_metadata" "metadata" {

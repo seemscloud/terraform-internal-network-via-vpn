@@ -18,8 +18,8 @@ resource "google_compute_instance" "generic" {
   }
 
   network_interface {
-    network    = var.network_name
-    subnetwork = var.subnetwork_name
+    network    = var.network.name
+    subnetwork = var.subnetwork.name
   }
 
   scheduling {

@@ -80,7 +80,7 @@ module "aaa_subnetwork_bbb-router-nat_ip" {
   source = "./address"
 
   name = "${local.aaa_network_aaa-name}-${var.aaa_subnetwork_bbb-name}-router-nat-ip"
-  type = var.aaa_network_aaa-address_type
+  type = var.aaa_subnetwork_bbb-router-nat_ip-type
 }
 
 module "aaa_subnetwork_bbb-router" {
@@ -141,7 +141,7 @@ module "aaa_subnetwork_ccc-router-nat_ip" {
   source = "./address"
 
   name = "${local.aaa_network_aaa-name}-${var.aaa_subnetwork_ccc-name}-router-nat-ip"
-  type = var.aaa_network_aaa-address_type
+  type = var.aaa_subnetwork_ccc-router-nat_ip-type
 }
 
 module "aaa_subnetwork_ccc-router" {

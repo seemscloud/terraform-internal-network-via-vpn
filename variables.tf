@@ -14,14 +14,16 @@ variable "aaa_ssh_pub_key_aaa-terraform" { type = string }
 variable "aaa_network_aaa-name" { type = string }
 variable "aaa_network_aaa-auto_create_subnetworks" { type = bool }
 
-# VPC (Foo) Subnets
+# VPC (Bastion) Subnet
 variable "aaa_subnetwork_aaa-name" { type = string }
 variable "aaa_subnetwork_aaa-ip_cidr_range" { type = string }
 
+# VPC (Foo) Subnet
 variable "aaa_subnetwork_bbb-name" { type = string }
 variable "aaa_subnetwork_bbb-ip_cidr_range" { type = string }
 variable "aaa_subnetwork_bbb-router-nat_ip-type" { type = string }
 
+# VPC (Bar) Subnet
 variable "aaa_subnetwork_ccc-name" { type = string }
 variable "aaa_subnetwork_ccc-ip_cidr_range" { type = string }
 variable "aaa_subnetwork_ccc-router-nat_ip-type" { type = string }

@@ -37,6 +37,28 @@ module "aaa_subnetwork_aaa" {
   depends_on = [module.aaa_network_aaa]
 }
 
+#module "aaa_instance_aaa" {
+#  source = "./instance/single"
+#
+#  name                  = local.aaa_instance_aaa-name
+#  machine_type          = var.aaa_instance_aaa-machine_type
+#  zone                  = var.aaa_instance_aaa-zone
+#  tags                  = var.aaa_instance_aaa-tags
+#  nat_ip                = module.aaa_instance_aaa-nat_ip
+#  desired_status        = var.aaa_instance_aaa-desired_status
+#  boot_image            = var.aaa_instance_aaa-boot_image
+#  boot_disk_size        = var.aaa_instance_aaa-boot_disk_size
+#  boot_disk_type        = var.aaa_instance_aaa-boot_disk_type
+#  boot_disk_auto_delete = var.aaa_instance_aaa-boot_disk_auto_delete
+#  preemptible           = var.aaa_instance_aaa-preemptible
+#  automatic_restart     = var.aaa_instance_aaa-automatic_restart
+#
+#  network_name    = module.aaa_network_aaa
+#  subnetwork_name = module.aaa_subnetwork_aaa
+#
+#  depends_on = [module.aaa_network_aaa, module.aaa_subnetwork_aaa]
+#}
+
 ################################################################################
 #
 # Subnet AAA-BBB (
@@ -99,9 +121,9 @@ module "aaa_subnetwork_ccc-router-nat_ip" {
 module "aaa_subnetwork_ccc-router" {
   source = "./router"
 
-  name       = "${local.aaa_network_aaa-name}-${var.aaa_subnetwork_bbb-name}-router"
-  nat_ip     = module.aaa_subnetwork_bbb-router-nat_ip.generic
-  subnetwork = module.aaa_subnetwork_bbb.generic
+  name       = "${local.aaa_network_aaa-name}-${var.aaa_subnetwork_ccc-name}-router"
+  nat_ip     = module.aaa_subnetwork_ccc-router-nat_ip.generic
+  subnetwork = module.aaa_subnetwork_ccc.generic
   network    = module.aaa_network_aaa.generic
 
   depends_on = [module.aaa_network_aaa, module.aaa_subnetwork_ccc, module.aaa_subnetwork_ccc-router-nat_ip]

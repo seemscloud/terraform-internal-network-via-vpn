@@ -1,1 +1,5 @@
-variable "network" { type = string}
+variable "network" {
+  type = object({
+    name = string
+  })
+}

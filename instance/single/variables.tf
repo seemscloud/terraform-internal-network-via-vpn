@@ -2,7 +2,14 @@ variable "name" { type = string }
 variable "machine_type" { type = string }
 variable "zone" { type = string }
 variable "tags" { type = list(string) }
-variable "nat_ip" { type = object({ address = string }) }
+variable "nat_ip"
+{
+  type = object(
+    {
+      address = string
+    }
+  )
+}
 variable "desired_status" { type = string }
 variable "boot_image" { type = string }
 variable "boot_disk_size" { type = number }

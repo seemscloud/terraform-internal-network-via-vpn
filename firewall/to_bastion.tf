@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "internet_to_aaa_interface_aaa" {
   name    = "internet-to-bastion"
-  network = var.network
+  network = var.network.name
 
   allow {
     protocol = "tcp"

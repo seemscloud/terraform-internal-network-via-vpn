@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "bastion_to_all" {
   name    = "bastion-to-all"
-  network = var.network
+  network = var.network.name
 
   allow {
     protocol = "tcp"

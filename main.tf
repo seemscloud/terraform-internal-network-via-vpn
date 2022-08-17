@@ -112,7 +112,12 @@ module "aaa_instance_bbb" {
   network    = module.aaa_network_aaa.generic
   subnetwork = module.aaa_subnetwork_bbb.generic
 
-  depends_on = [module.aaa_network_aaa, module.aaa_subnetwork_bbb]
+  depends_on = [
+    module.aaa_network_aaa,
+    module.aaa_subnetwork_bbb,
+    module.aaa_subnetwork_bbb-router,
+    module.aaa_subnetwork_bbb-router-nat_ip
+  ]
 }
 
 ################################################################################
@@ -147,27 +152,35 @@ module "aaa_subnetwork_ccc-router" {
   subnetwork = module.aaa_subnetwork_ccc.generic
   network    = module.aaa_network_aaa.generic
 
-  depends_on = [module.aaa_network_aaa, module.aaa_subnetwork_ccc, module.aaa_subnetwork_ccc-router-nat_ip]
+  depends_on = [
+    module.aaa_network_aaa,
+    module.aaa_subnetwork_ccc,
+    module.aaa_subnetwork_ccc-router-nat_ip
+  ]
 }
 
-#module "aaa_instance_ccc" {
-#  source = "./instance/multi"
-#
-#  name                  = local.aaa_instance_ccc-name
-#  machine_type          = var.aaa_instance_ccc-machine_type
-#  zones                 = var.default-zones
-#  tags                  = var.aaa_instance_ccc-tags
-#  nat_ip                = "x"
-#  desired_status        = var.aaa_instance_ccc-desired_status
-#  boot_image            = var.aaa_instance_ccc-boot_image
-#  boot_disk_size        = var.aaa_instance_ccc-boot_disk_size
-#  boot_disk_type        = var.aaa_instance_ccc-boot_disk_type
-#  boot_disk_auto_delete = var.aaa_instance_ccc-boot_disk_auto_delete
-#  preemptible           = var.aaa_instance_ccc-preemptible
-#  automatic_restart     = var.aaa_instance_ccc-automatic_restart
-#
-#  network_name    = module.aaa_network_aaa.name
-#  subnetwork_name = module.aaa_subnetwork_ccc.name
-#
-#  depends_on = [module.aaa_network_aaa, module.aaa_subnetwork_ccc]
-#}
+module "aaa_instance_ccc" {
+  source = "./instance/multi"
+
+  name                  = local.aaa_instance_ccc-name
+  machine_type          = var.aaa_instance_ccc-machine_type
+  zones                 = var.default-zones
+  tags                  = var.aaa_instance_ccc-tags
+  desired_status        = var.aaa_instance_ccc-desired_status
+  boot_image            = var.aaa_instance_ccc-boot_image
+  boot_disk_size        = var.aaa_instance_ccc-boot_disk_size
+  boot_disk_type        = var.aaa_instance_ccc-boot_disk_type
+  boot_disk_auto_delete = var.aaa_instance_ccc-boot_disk_auto_delete
+  preemptible           = var.aaa_instance_ccc-preemptible
+  automatic_restart     = var.aaa_instance_ccc-automatic_restart
+
+  network    = module.aaa_network_aaa.generic
+  subnetwork = module.aaa_subnetwork_ccc.generic
+
+  depends_on = [
+    module.aaa_network_aaa,
+    module.aaa_subnetwork_ccc,
+    module.aaa_subnetwork_ccc-router,
+    module.aaa_subnetwork_ccc-router-nat_ip
+  ]
+}

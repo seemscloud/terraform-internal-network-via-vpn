@@ -26,7 +26,7 @@ aaa_subnetwork_bbb-router-nat_ip-type = "EXTERNAL"
 # VPC (Bar) Subnet
 aaa_subnetwork_ccc-name               = "bar"
 aaa_subnetwork_ccc-ip_cidr_range      = "10.100.20.8/29"
-aaa_subnetwork_bbb-router-nat_ip-type = "EXTERNAL"
+aaa_subnetwork_ccc-router-nat_ip-type = "EXTERNAL"
 
 # Instance (Bastion)
 aaa_instance_aaa-name                  = "bastion"

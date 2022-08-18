@@ -5,7 +5,8 @@ resource "google_compute_firewall" "internet_to_aaa_interface_aaa" {
   allow {
     protocol = "tcp"
     ports    = [
-      "22"
+      "22",
+      "1194"
     ]
   }
 
